@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../blog.service';
+import {Post} from 'src/app/post';
+import { ActivatedRoute, Router } from '@angular/router'; 
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-addblog',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addblog.component.css']
 })
 export class AddblogComponent implements OnInit {
+  post: Post;
+  http: HttpClient;
 
-  constructor() { }
+  constructor(private blogService: BlogService,private router: Router) {
+
+   }
 
   ngOnInit() {
-  }
+    this.blogService.save(this.post).subscribe(result => this.gotoUserList());
+  
 
+  }
+  gotoUserList(){
+    this.router.navigate(['/add'])
+  }
+  
 }
