@@ -18,7 +18,7 @@ public class BlogPostController {
         b.setId(id);
         b.setUserId(userId);
         b.setTitle(title);
-        b.setPostText(postText);
+        b.setPostText(postText);git 
         b.setImageURL(imageURL);
         b.setTag1(tag1);
         b.setTag1(tag2);

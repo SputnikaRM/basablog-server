@@ -337,7 +337,7 @@ let BlogService = class BlogService {
     constructor(http) {
         this.http = http;
         this.blogposturl = "https://basablog.herokuapp.com/blogPost/add";
-        this.bloggeturl = "https://https://basablog.herokuapp.com/blogPost/all";
+        this.bloggeturl = "https://basablog.herokuapp.com/blogPost/all";
         this.blogdeleteurl = "https://localhost:8080/";
         this.blogupdateurl = "http://localhost:8080/";
         this.commentgeturl = "http://localhost:8080/";

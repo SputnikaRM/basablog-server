@@ -7,7 +7,7 @@ import {Comment} from 'src/app/comment';
   providedIn: 'root'
 })
 export class BlogService {private blogposturl = "https://basablog.herokuapp.com/blogPost/add";
-private bloggeturl =  "https://https://basablog.herokuapp.com/blogPost/all";
+private bloggeturl =  "https://basablog.herokuapp.com/blogPost/all";
 private blogdeleteurl = "https://localhost:8080/";
 private blogupdateurl = "http://localhost:8080/";
 private commentgeturl = "http://localhost:8080/";
