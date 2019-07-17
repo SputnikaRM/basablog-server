@@ -8,7 +8,7 @@ import {Comment} from 'src/app/comment';
 })
 export class BlogService {private blogposturl = "http://localhost:8080/blogPost/add";
 private bloggeturl =  "http://localhost:8080/blogPost/all";
-private blogdeleteurl = "http://localhost:8080/";
+private blogdeleteurl = "https://localhost:8080/";
 private blogupdateurl = "http://localhost:8080/";
 private commentgeturl = "http://localhost:8080/";
 private commentposturl = "http://localhost:8080/";
