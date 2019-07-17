@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = 'container'>\n    <h1>Add Blog</h1>\n   <br>\n   <form>\n        <div class=\"form-group\">\n           <label for=\"title\">Title</label>\n           <input type='text' name='title' class='form-control' placeholder='Add title' #title>\n       </div>\n       <div class=\"form-group\">\n            <label for=\"content\">Content</label>\n            <input type='text' name='content' class='form-control' placeholder='Add Content' #content>\n        </div>\n        <button type=\"button\" (click)='addBlog(title.value,content.value)' class=\"btn btn-primary\">Submit</button>\n    </form>\n\n\n</div>\n\n"
+module.exports = "<div class = 'container'>\n    <h1>Add Blog</h1>\n    <div class=\"card my-5\">\n            <div class=\"card-body\">\n              <form (ngSubmit)=\"onSubmit()\" #userForm=\"ngForm\">\n                <div class=\"form-group\">\n                  <label for=\"Post\">Title</label>\n                  <input type=\"text\" [(ngModel)]=\"post.title\" \n                    class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"Title\"\n                    required #title=\"ngModel\">\n                </div>\n                \n                <div class=\"form-group\">\n                  <label for=\"Post\">Post</label>\n                  <input type=\"text\" [(ngModel)]=\"post.postText\" \n                    class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"PostText\"\n                    required #postText=\"ngModel\">\n                </div>\n                \n                <div class=\"form-group\">\n                  <label for=\"userid\">UserID</label>\n                  <input type=\"text\" [(ngModel)]=\"post.userid\" \n                    class=\"form-control\" id=\"UserID\" name=\"UserId\" placeholder=\"UserId\"\n                    required #userId=\"ngModel\">\n                  \n                </div>\n                <button type=\"submit\" class=\"btn btn-info\">Submit</button>\n              </form>\n            </div>\n          </div>\n        "
 
 /***/ }),
 
@@ -123,13 +123,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddblogComponent", function() { return AddblogComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _blog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../blog.service */ "./src/app/blog.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
 
 
 let AddblogComponent = class AddblogComponent {
-    constructor() { }
+    constructor(blogService, router) {
+        this.blogService = blogService;
+        this.router = router;
+    }
     ngOnInit() {
+        this.blogService.save(this.post).subscribe(result => this.gotoUserList());
+    }
+    gotoUserList() {
+        this.router.navigate(['/add']);
     }
 };
+AddblogComponent.ctorParameters = () => [
+    { type: _blog_service__WEBPACK_IMPORTED_MODULE_2__["BlogService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
 AddblogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-addblog',
@@ -297,6 +312,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comment_comment_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./comment/comment.component */ "./src/app/comment/comment.component.ts");
 /* harmony import */ var _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./adduser/adduser.component */ "./src/app/adduser/adduser.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+
 
 
 
@@ -320,12 +337,13 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _user_user_component__WEBPACK_IMPORTED_MODULE_7__["UserComponent"],
             _blog_blog_component__WEBPACK_IMPORTED_MODULE_8__["BlogComponent"],
             _comment_comment_component__WEBPACK_IMPORTED_MODULE_9__["CommentComponent"],
-            _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_10__["AdduserComponent"]
+            _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_10__["AdduserComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"]
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -355,12 +373,12 @@ __webpack_require__.r(__webpack_exports__);
 let BlogService = class BlogService {
     constructor(http) {
         this.http = http;
-        this.blogposturl = "http://localhost:8080/blogPost/add";
-        this.bloggeturl = "http://localhost:8080/blogPost/all";
-        this.blogdeleteurl = "https://localhost:8080/";
-        this.blogupdateurl = "http://localhost:8080/";
-        this.commentgeturl = "http://localhost:8080/";
-        this.commentposturl = "http://localhost:8080/";
+        this.blogposturl = "https://basablog.herokuapp.com/blogPost/add";
+        this.bloggeturl = "https://basablog.herokuapp.com/blogPost/all";
+        this.blogdeleteurl = "https://basablog.herokuapp.com/";
+        this.blogupdateurl = "https://basablog.herokuapp.com/";
+        this.commentgeturl = "https://basablog.herokuapp.com/";
+        this.commentposturl = "https://basablog.herokuapp.com/";
     }
     findAllBlogPost() {
         return this.http.get(this.bloggeturl);
