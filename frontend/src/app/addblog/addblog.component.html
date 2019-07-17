@@ -1,1 +1,18 @@
-<p>addblog works!</p>
+<div class = 'container'>
+    <h1>Add Blog</h1>
+   <br>
+   <form>
+        <div class="form-group">
+           <label for="title">Title</label>
+           <input type='text' name='title' class='form-control' placeholder='Add title' #title>
+       </div>
+       <div class="form-group">
+            <label for="content">Content</label>
+            <input type='text' name='content' class='form-control' placeholder='Add Content' #content>
+        </div>
+        <button type="button" (click)='addBlog(title.value,content.value)' class="btn btn-primary">Submit</button>
+    </form>
+
+
+</div>
+
