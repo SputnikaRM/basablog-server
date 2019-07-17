@@ -23,7 +23,7 @@ export class AddblogComponent implements OnInit {
 
   }
   gotoUserList(){
-    this.router.navigate(['/add'])
+    this.router.navigate(['blogPost/add'])
   }
   
 }
