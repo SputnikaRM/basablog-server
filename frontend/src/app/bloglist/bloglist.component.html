@@ -1,3 +1,4 @@
+<tr *ngfor="let post of blogpost">
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src={{post.imageURL}} alt="Card image cap">
     <div class="card-body">
@@ -5,6 +6,8 @@
       <p class="card-text">{{post.postText}}</p>
 
       <h3 class="card-title">{{post.userId}}</h5>
+      </tr>
+      
 
     </div>
   </div>
