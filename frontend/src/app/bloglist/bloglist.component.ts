@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-bloglist',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bloglist.component.css']
 })
 export class BloglistComponent implements OnInit {
+  private blogposturl = "http://localhost:8080/";
+  private blog
 
-  constructor() { }
+  constructor(private http:HttpClient) {
+
+    
+   }
 
   ngOnInit() {
   }
