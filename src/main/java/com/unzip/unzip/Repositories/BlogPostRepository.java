@@ -1,9 +1,8 @@
 package com.unzip.unzip.Repositories;
 
-import com.unzip.unzip.Models.User;
+import com.unzip.unzip.Models.BlogPost;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer>{
-}
+public interface BlogPostRepository extends CrudRepository<BlogPost, Integer> {}
