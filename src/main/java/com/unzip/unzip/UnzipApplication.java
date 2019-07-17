@@ -23,33 +23,33 @@ public class UnzipApplication {
 
 	}
 
-//	@Bean
-//	public CommandLineRunner demo(BlogPostRepository repository) {
-//		return (args) -> {
-//			//save a couple of customers
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//
-//
-//			// fetch all customers
-//			log.info("Customers found with findAll():");
-//			log.info("-------------------------------");
-//			for (BlogPost blogPost : repository.findAll()) {
-//				log.info(blogPost.toString());
-//			}
-//			log.info("");
-//
-//			// fetch an individual customer by ID
-//			repository.findById(10)
-//					.ifPresent(customer -> {
-//						log.info("Customer found with findById(1L):");
-//						log.info("--------------------------------");
-//						log.info(customer.toString());
-//						log.info("");
-//					});
-//		};
-//	}
+	@Bean
+	public CommandLineRunner demo(BlogPostRepository repository) {
+		return (args) -> {
+			//save a couple of customers
+			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
+			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
+			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
+			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
+			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
+
+
+			// fetch all customers
+			log.info("Customers found with findAll():");
+			log.info("-------------------------------");
+			for (BlogPost blogPost : repository.findAll()) {
+				log.info(blogPost.toString());
+			}
+			log.info("");
+
+			// fetch an individual customer by ID
+			repository.findById(10)
+					.ifPresent(customer -> {
+						log.info("Customer found with findById(1L):");
+						log.info("--------------------------------");
+						log.info(customer.toString());
+						log.info("");
+					});
+		};
+	}
 }
