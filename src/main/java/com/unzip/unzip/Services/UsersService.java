@@ -1,9 +1,13 @@
 package com.unzip.unzip.Services;
 
-import org.springframework.stereotype.Service;
+import com.unzip.unzip.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
 
 
 @Service
 public class UsersService {
+    @Autowired
+    UserRepository repository;
 }
