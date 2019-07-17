@@ -28,6 +28,11 @@ public class BlogPost {
         this.tag3 = tag3;
     }
 
+    public BlogPost(String title, String postText) {
+        this.title = title;
+        this.postText = postText;
+    }
+
     public Integer getId() {
         return id;
     }
