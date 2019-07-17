@@ -347,9 +347,9 @@ __webpack_require__.r(__webpack_exports__);
 var BlogService = /** @class */ (function () {
     function BlogService(http) {
         this.http = http;
-        this.blogposturl = "http://localhost:8080/blogPost/add";
-        this.bloggeturl = "http://localhost:8080/blogPost/all";
-        this.blogdeleteurl = "http://localhost:8080/";
+        this.blogposturl = "https://basablog.herokuapp.com/blogPost/add";
+        this.bloggeturl = "https://https://basablog.herokuapp.com/blogPost/all";
+        this.blogdeleteurl = "https://localhost:8080/";
         this.blogupdateurl = "http://localhost:8080/";
         this.commentgeturl = "http://localhost:8080/";
         this.commentposturl = "http://localhost:8080/";
