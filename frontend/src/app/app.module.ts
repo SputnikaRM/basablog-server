@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { BlogComponent } from './blog/blog.component';
 import { CommentComponent } from './comment/comment.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -24,8 +25,7 @@ import { AdduserComponent } from './adduser/adduser.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
-   
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
