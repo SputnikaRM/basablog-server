@@ -1,11 +1,13 @@
 package com.unzip.unzip.Services;
 
-import com.unzip.unzip.Repositories.BlogPostRepository;
+import com.unzip.unzip.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class BlogPostService {
+public class UserService {
     @Autowired
-    BlogPostRepository blogPostRepository;
+    UserRepository repository;
 }
