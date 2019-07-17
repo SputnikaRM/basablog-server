@@ -1,13 +1,14 @@
-<tr *ngfor="let post of blogpost">
+
 <div class="card" style="width: 18rem;">
+    <tr *ngfor="let post of posts">
     <img class="card-img-top" src={{post.imageURL}} alt="Card image cap">
     <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
       <p class="card-text">{{post.postText}}</p>
 
-      <h3 class="card-title">{{post.userId}}</h5>
-      </tr>
-      
+      <h3 class="card-title">{{post.userId}}</h3>
+     
+
 
     </div>
   </div>

@@ -10,6 +10,7 @@ import { BlogComponent } from './blog/blog.component';
 import { CommentComponent } from './comment/comment.component';
 import { AdduserComponent } from './adduser/adduser.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,9 @@ import { AdduserComponent } from './adduser/adduser.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
