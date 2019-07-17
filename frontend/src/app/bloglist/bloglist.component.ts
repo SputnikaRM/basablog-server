@@ -9,7 +9,7 @@ import {Comment} from 'src/app/comment';
   styleUrls: ['./bloglist.component.css']
 })
 export class BloglistComponent implements OnInit {
-  blogpost: Post[];
+  posts: Post[];
 
   constructor(private blogService: BlogService) {
     
@@ -19,7 +19,9 @@ export class BloglistComponent implements OnInit {
    
 
   ngOnInit() {
-    this.blogService.findAllBlogPost().subscribe(data=> this.blogpost = data)
-  };
+    this.blogService.findAllBlogPost().subscribe(data=> {this.posts = data;});
+  }
+      
+ 
 
 }
