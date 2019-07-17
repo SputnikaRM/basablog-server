@@ -10,6 +10,7 @@ import { BlogComponent } from './blog/blog.component';
 import { CommentComponent } from './comment/comment.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +21,15 @@ import {HttpClientModule} from '@angular/common/http';
     UserComponent,
     BlogComponent,
     CommentComponent,
-    AdduserComponent
+    AdduserComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

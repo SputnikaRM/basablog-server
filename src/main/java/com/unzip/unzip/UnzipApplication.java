@@ -23,7 +23,7 @@ public class UnzipApplication {
 
 	}
 
-<<<<<<< HEAD
+
 //	@Bean
 //	public CommandLineRunner demo(BlogPostRepository repository) {
 //		return (args) -> {
@@ -53,6 +53,5 @@ public class UnzipApplication {
 //					});
 //		};
 	//}
-=======
->>>>>>> d2afd00ac4854693585663314efa634740edb726
+
 }
