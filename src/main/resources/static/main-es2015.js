@@ -41,7 +41,7 @@ module.exports = "<div class = 'container'>\n    <h1>Add Blog</h1>\n    <div cla
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n        <div class=\"form-group\">\n          <label for=\"exampleInputEmail1\">Email address</label>\n          <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\n          <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"exampleInputPassword1\">Password</label>\n          <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\n        </div>\n        <div class=\"form-group form-check\">\n          <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n          <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n        </div>\n        <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n      </form>\n"
+module.exports = "<form action=\"action_page.php\" style=\"border:1px solid #ccc\">\n  <div class=\"container\">\n    <h1>Sign Up</h1>\n    <p>Please fill in this form to create an account.</p>\n    <hr>\n    <input id=\"username\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.username\" name=\"username\" placeholder=\"Username\" #username = \"ngModel\" required>\n    <input id=\"email\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.emailAddress\" name=\"email\" placeholder=\"Email Address\" #emailAddress = \"ngModel\" required>\n    <input id=\"password\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.password\" name=\"password\" placeholder=\"Password\" #password = \"ngModel\" required>\n    <div class=\"clearfix\">\n      <button type=\"button\" class=\"cancelbtn\">Cancel</button>\n      <button type=\"submit\" class=\"signupbtn\" (click)=\"onSubmit()\">Sign Up</button>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "<form>\n        <div class=\"form-group\">\n          <label f
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n     {{ title }}\n  </h1>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Add Username</a>\n        </li>\n        <!-- <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li> -->\n      </ul>\n    </div>\n  </nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n     {{ title }}\n  </h1>\n  <app-adduser></app-adduser>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Add Username</a>\n        </li>\n        <!-- <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li> -->\n      </ul>\n    </div>\n  </nav>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -188,13 +188,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdduserComponent", function() { return AdduserComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user */ "./src/app/user.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
+
+
 
 
 let AdduserComponent = class AdduserComponent {
-    constructor() { }
+    constructor(route, userService, router) {
+        this.route = route;
+        this.userService = userService;
+        this.router = router;
+        this.user = new src_app_user__WEBPACK_IMPORTED_MODULE_2__["User"]();
+    }
     ngOnInit() {
     }
+    onSubmit() {
+        this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    }
+    gotoUserList() {
+        this.router.navigate(['users/add']);
+    }
 };
+AdduserComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
 AdduserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-adduser',
@@ -553,6 +575,62 @@ CommentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
 class Post {
+    constructor() {
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/user.service.ts":
+/*!*********************************!*\
+  !*** ./src/app/user.service.ts ***!
+  \*********************************/
+/*! exports provided: UserService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let UserService = class UserService {
+    constructor(http) {
+        this.http = http;
+        this.userUrl = "https://basablog.herokuapp.com/users/add";
+    }
+    save(user) {
+        return this.http.post(this.userUrl, user);
+    }
+};
+UserService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], UserService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/user.ts":
+/*!*************************!*\
+  !*** ./src/app/user.ts ***!
+  \*************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+class User {
     constructor() {
     }
 }
