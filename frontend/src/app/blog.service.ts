@@ -6,12 +6,8 @@ import {Comment} from 'src/app/comment';
 @Injectable({
   providedIn: 'root'
 })
-export class BlogService {private blogposturl = "https://basablog.herokuapp.com/blogPost/add";
-private bloggeturl =  "https://basablog.herokuapp.com/blogPost/all";
-private blogdeleteurl = "https://basablog.herokuapp.com/";
-private blogupdateurl = "https://basablog.herokuapp.com/";
-private commentgeturl = "https://basablog.herokuapp.com/";
-private commentposturl = "https://basablog.herokuapp.com/";
+export class BlogService {private blogposturl = "http://localhost:8080/blogPost/add";
+private bloggeturl =  "http://localhost:8080/blogPost/all";
 
 constructor(private http:HttpClient) {
   

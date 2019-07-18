@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@CrossOrigin
 class UserController {
     @Autowired
     private UserRepository userRepository;

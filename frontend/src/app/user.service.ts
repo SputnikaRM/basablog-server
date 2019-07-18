@@ -11,7 +11,7 @@ export class UserService {
   private userUrl: string;
 
   constructor(private http: HttpClient) {
-    this.userUrl = "https://basablog.herokuapp.com/users/add";
+    this.userUrl = "http://localhost:8080/users/add";
   }
   public save(user: User) {
     return this.http.post<User>(this.userUrl, user);
