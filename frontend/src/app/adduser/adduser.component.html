@@ -4,7 +4,7 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
     <input id="username" type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="Username" #username = "ngModel" required>
-    <input id="email" type="text" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email Address" #email = "ngModel" required>
+    <input id="email" type="text" class="form-control" [(ngModel)]="user.emailAddress" name="email" placeholder="Email Address" #emailAddress = "ngModel" required>
     <input id="password" type="text" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password" #password = "ngModel" required>
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>
