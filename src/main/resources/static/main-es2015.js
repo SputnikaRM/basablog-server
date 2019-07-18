@@ -138,7 +138,7 @@ let AddblogComponent = class AddblogComponent {
         this.blogService.save(this.post).subscribe(result => this.gotoUserList());
     }
     gotoUserList() {
-        this.router.navigate(['/add']);
+        this.router.navigate(['blogPost/add']);
     }
 };
 AddblogComponent.ctorParameters = () => [

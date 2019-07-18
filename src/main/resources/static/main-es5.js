@@ -139,7 +139,7 @@ var AddblogComponent = /** @class */ (function () {
         this.blogService.save(this.post).subscribe(function (result) { return _this.gotoUserList(); });
     };
     AddblogComponent.prototype.gotoUserList = function () {
-        this.router.navigate(['/add']);
+        this.router.navigate(['blogPost/add']);
     };
     AddblogComponent.ctorParameters = function () { return [
         { type: _blog_service__WEBPACK_IMPORTED_MODULE_2__["BlogService"] },
