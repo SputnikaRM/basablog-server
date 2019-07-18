@@ -21,8 +21,11 @@ export class AddblogComponent implements OnInit {
   }
 
   onSubmit(){
-    this.blogService.save(this.post);
+    this.blogService.save(this.post).subscribe(result => this.gotoUserList());
   }
 
+  gotoUserList(){
+    this.router.navigate(['blogPost/add'])
+  }
   
 }
