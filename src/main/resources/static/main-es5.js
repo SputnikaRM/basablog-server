@@ -52,7 +52,7 @@ module.exports = "<form>\n        <div class=\"form-group\">\n          <label f
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Add Username</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n     {{ title }}\n  </h1>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Add Username</a>\n        </li>\n        <!-- <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li> -->\n      </ul>\n    </div>\n  </nav>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -124,17 +124,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _blog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../blog.service */ "./src/app/blog.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/post */ "./src/app/post.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var AddblogComponent = /** @class */ (function () {
-    function AddblogComponent(blogService, router) {
+    // http: HttpClient;
+    function AddblogComponent(route, blogService, router) {
+        this.route = route;
         this.blogService = blogService;
         this.router = router;
+        this.post = new src_app_post__WEBPACK_IMPORTED_MODULE_3__["Post"]();
     }
     AddblogComponent.prototype.ngOnInit = function () {
+    };
+    AddblogComponent.prototype.onSubmit = function () {
         var _this = this;
         this.blogService.save(this.post).subscribe(function (result) { return _this.gotoUserList(); });
     };
@@ -142,8 +149,9 @@ var AddblogComponent = /** @class */ (function () {
         this.router.navigate(['blogPost/add']);
     };
     AddblogComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
         { type: _blog_service__WEBPACK_IMPORTED_MODULE_2__["BlogService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
     ]; };
     AddblogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -282,7 +290,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'frontend';
+        this.title = 'unZip';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -546,6 +554,26 @@ var CommentComponent = /** @class */ (function () {
         })
     ], CommentComponent);
     return CommentComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/post.ts":
+/*!*************************!*\
+  !*** ./src/app/post.ts ***!
+  \*************************/
+/*! exports provided: Post */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Post", function() { return Post; });
+var Post = /** @class */ (function () {
+    function Post() {
+    }
+    return Post;
 }());
 
 
