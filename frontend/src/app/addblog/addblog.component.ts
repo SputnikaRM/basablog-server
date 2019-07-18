@@ -11,17 +11,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddblogComponent implements OnInit {
   post: Post;
-  http: HttpClient;
+  // http: HttpClient;
 
-  constructor(private blogService: BlogService,private router: Router) {
-
+  constructor(private route:ActivatedRoute, private blogService: BlogService,private router: Router) {
+      this.post = new Post();
    }
 
   ngOnInit() {
-    this.blogService.save(this.post).subscribe(result => this.gotoUserList());
-  
-
   }
+
+  onSubmit(){
+    this.blogService.save(this.post).subscribe(result => this.gotoUserList());
+  }
+
   gotoUserList(){
     this.router.navigate(['blogPost/add'])
   }
