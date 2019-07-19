@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {User} from '../user';
+import {User} from 'src/app/user';
 import {UserService} from '../user.service';
 
 @Component({
@@ -11,19 +11,18 @@ import {UserService} from '../user.service';
 export class UserComponent implements OnInit {
 user: User;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
     this.user = new User();
   }
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   onSubmit() {
-  this.userService.verifyUser(this.user).subscribe(result => this.gotoUserList());
+    this.userService.verifyUser(this.user).subscribe(user => this.verify());
   }
-
-  gotoUserList() {
-    this.router.navigate((['users/verify']));
+  verify() {
+    this.router.navigate(['users/verify']);
+    }
   }
-}
 
 

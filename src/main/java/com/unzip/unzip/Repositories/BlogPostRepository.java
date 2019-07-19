@@ -8,6 +8,4 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Repository
 public interface BlogPostRepository extends CrudRepository<BlogPost, Integer> {
-
-
 }
