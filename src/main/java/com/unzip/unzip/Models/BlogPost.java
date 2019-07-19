@@ -12,21 +12,19 @@ public class BlogPost {
     private String title;
     private String postText;
     private String imageURL;
-    private Integer tag1;
-    private Integer tag2;
-    private Integer tag3;
+    private String tag1;
+
 
     public BlogPost() {
     }
 
-    public BlogPost(Integer userId, String title, String postText, String imageURL, Integer tag1, Integer tag2, Integer tag3) {
+    public BlogPost(Integer userId, String title, String postText, String imageURL, String tag1) {
         this.userId = userId;
         this.title = title;
         this.postText = postText;
         this.imageURL = imageURL;
         this.tag1 = tag1;
-        this.tag2 = tag2;
-        this.tag3 = tag3;
+
     }
 
     public BlogPost(String title, String postText, Integer userId) {
@@ -75,29 +73,15 @@ public class BlogPost {
         this.imageURL = imageURL;
     }
 
-    public Integer getTag1() {
+    public String getTag() {
         return tag1;
     }
 
-    public void setTag1(Integer tag1) {
+    public void setTag(String tag1) {
         this.tag1 = tag1;
     }
 
-    public Integer getTag2() {
-        return tag2;
-    }
 
-    public void setTag2(Integer tag2) {
-        this.tag2 = tag2;
-    }
-
-    public Integer getTag3() {
-        return tag3;
-    }
-
-    public void setTag3(Integer tag3) {
-        this.tag3 = tag3;
-    }
 }
 
 
