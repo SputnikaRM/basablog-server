@@ -1,14 +1,24 @@
-<form action="action_page.php" style="border:1px solid #ccc">
-  <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-    <input id="username" type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="Username" #username = "ngModel" required>
-    <input id="email" type="text" class="form-control" [(ngModel)]="user.emailAddress" name="email" placeholder="Email Address" #emailAddress = "ngModel" required>
-    <input id="password" type="text" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password" #password = "ngModel" required>
-    <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn" (click)="onSubmit()">Sign Up</button>
+
+<div class="card-body" align="center">
+
+<form class="form-horizontal" style="align-content: center">
+  <fieldset>
+    <legend>User Registration</legend>
+    <div class="form-group">
+      <div class="col-md-5">
+        <input id="username" name="username" type="text" [(ngModel)]="user.username" placeholder="Username"
+               class="form-control" required #username="ngModel">
+
+        <input id="emailAddress" name="emailAddress" type="email" placeholder="Enter Email"
+               [(ngModel)]="user.emailAddress" class="form-control" required #emailAddress="ngModel">
+
+        <input id="password" name="password" type="password" placeholder="Password" [(ngModel)]="user.password"
+               class="form-control" #password="ngModel" required>
+
+      </div>
+      <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+
     </div>
-  </div>
+  </fieldset>
 </form>
+</div>
