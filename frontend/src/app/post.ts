@@ -4,6 +4,7 @@ export class Post {
     postText : string;
     imageURL : string;
     userId : number;
+    tag1 : string;
 
     constructor() {
        
