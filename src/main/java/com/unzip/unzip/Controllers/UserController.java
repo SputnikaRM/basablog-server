@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Id;
+
 @Controller
 @CrossOrigin
 class UserController {
@@ -18,9 +20,8 @@ class UserController {
         return "Saved";
     }
 
-    @GetMapping(path="users/all")
+    @GetMapping(path="users/verify")
     public @ResponseBody Iterable<User> getAllUsers(){
         return userRepository.findAll();
     }
-
 }
