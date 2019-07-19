@@ -9,12 +9,18 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private userUrl: string;
+  private verifyUrl: string;
 
   constructor(private http: HttpClient) {
-    this.userUrl = "http://localhost:8080/users/add";
+    this.userUrl = 'http://localhost:8080/users/add';
+    this.verifyUrl = 'http://localhost:8080/users/verify';
   }
   public save(user: User) {
     return this.http.post<User>(this.userUrl, user);
+  }
+
+  public verifyUser(user: User) {
+    return this.http.get<User>(this.verifyUrl, user);
   }
 
 }
