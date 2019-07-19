@@ -6,6 +6,7 @@ export class Post {
     userId : number;
 
     constructor() {
+        
 
     }
 }

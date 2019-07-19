@@ -41,7 +41,7 @@ module.exports = "<div class = 'container'>\n    <h1>Add Blog</h1>\n    <div cla
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form action=\"action_page.php\" style=\"border:1px solid #ccc\">\n  <div class=\"container\">\n    <h1>Sign Up</h1>\n    <p>Please fill in this form to create an account.</p>\n    <hr>\n    <input id=\"username\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.username\" name=\"username\" placeholder=\"Username\" #username = \"ngModel\" required>\n    <input id=\"email\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.emailAddress\" name=\"email\" placeholder=\"Email Address\" #emailAddress = \"ngModel\" required>\n    <input id=\"password\" type=\"text\" class=\"form-control\" [(ngModel)]=\"user.password\" name=\"password\" placeholder=\"Password\" #password = \"ngModel\" required>\n    <div class=\"clearfix\">\n      <button type=\"button\" class=\"cancelbtn\">Cancel</button>\n      <button type=\"submit\" class=\"signupbtn\" (click)=\"onSubmit()\">Sign Up</button>\n    </div>\n  </div>\n</form>"
+module.exports = "\n<div class=\"card-body\" align=\"center\">\n\n<form class=\"form-horizontal\" style=\"align-content: center\">\n  <fieldset>\n    <legend>User Registration</legend>\n    <div class=\"form-group\">\n      <div class=\"col-md-5\">\n        <input id=\"username\" name=\"username\" type=\"text\" [(ngModel)]=\"user.username\" placeholder=\"Username\"\n               class=\"form-control\" required #username=\"ngModel\">\n\n        <input id=\"emailAddress\" name=\"emailAddress\" type=\"email\" placeholder=\"Enter Email\"\n               [(ngModel)]=\"user.emailAddress\" class=\"form-control\" required #emailAddress=\"ngModel\">\n\n        <input id=\"password\" name=\"password\" type=\"password\" placeholder=\"Password\" [(ngModel)]=\"user.password\"\n               class=\"form-control\" #password=\"ngModel\" required>\n\n      </div>\n      <button type=\"submit\" class=\"btn btn-info\" (click)=\"onSubmit()\">Submit</button>\n\n    </div>\n  </fieldset>\n</form>\n</div>\n"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "<form action=\"action_page.php\" style=\"border:1px solid #ccc
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n     {{ title }}\n  </h1>\n  <app-adduser></app-adduser>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"#\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Add Username</a>\n        </li>\n        <!-- <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li> -->\n      </ul>\n    </div>\n  </nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1 style=\"align-self: center\">\n      {{ title }}\n  </h1>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n    <a class=\"navbar-brand\" href=\"\">unZip Blog</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item \">\n          <a class=\"nav-link\" routerLink = ''>BlogList </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink = 'addblog'>Add Blog</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink= 'adduser'>Register</a>\n        </li>\n         <li class=\"nav-item\">\n           <a class=\"nav-link\" routerLink= 'user'>Login</a>\n        </li>\n        <!-- <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n        </li> -->\n        <!-- Example split danger button -->\n<div class=\"btn-group\">\n  <button type=\"button\" class=\"btn btn-danger\">View Blogs by Tag</button>\n  <button type=\"button\" class=\"btn btn-danger dropdown-toggle dropdown-toggle-split\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n    <span class=\"sr-only\">Toggle Dropdown</span>\n  </button>\n  <div class=\"dropdown-menu\">\n    <a class=\"dropdown-item\" href=\"#\">Tag1</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag2</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag3</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag4</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag5</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag6</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag7</a>\n    <a class=\"dropdown-item\" href=\"#\">Tag8</a>\n    <div class=\"dropdown-divider\"></div>\n    <a class=\"dropdown-item\" href=\"#\">Separated link</a>\n  </div>\n</div>\n        \n      </ul>\n    </div>\n  </nav>\n  \n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<p>blog works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"card\" style=\"width: 18rem;\">\n    <tr *ngFor=\"let post of posts\">\n    <img class=\"card-img-top\" src={{post.imageURL}} alt=\"Card image cap\">\n    <div class=\"card-body\">\n            <h5 class=\"card-title\">{{post.title}}</h5>\n      <p class=\"card-text\">{{post.postText}}</p>\n\n      <h3 class=\"card-title\">{{post.userId}}</h3>\n     \n\n\n    </div>\n  </div>\n"
+module.exports = "\n\n\n<div class=\"card text-center\"style=\"width: 18rem; margin:0 auto;\">\n  <div class=\"card border-danger mb-3\" style=\"max-width: 18rem;\">\n    <tr *ngFor=\"let post of posts\">\n    <img class=\"card-img-top\" src={{post.imageURL}} alt=\"Card image cap\">\n    <div class=\"card-body\">\n            <h5 class=\"card-title\">{{post.title}}</h5>\n      <p class=\"card-text\">{{post.postText}}</p>\n\n      <h3 class=\"card-title\">{{post.userId}}</h3>\n  \n     \n\n    </div>\n    </div>\n  </div>\n  \n\n"
 
 /***/ }),
 
@@ -96,7 +96,7 @@ module.exports = "<form>\n    <div class=\"form-group\">\n      <label for=\"Nam
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>user works!</p>\n"
+module.exports = "<div class=\"popover-header clearfix\">\n<div class=\"card-body\" align=\"right\">\n<div class=\"form-horizontal\">\n  <form class=\"row\" style=\"align-content: center\">\n    <fieldset>\n      <div class=\"row\">\n      <div class=\"form-group\">\n        <div class=\"col-sm-auto\">\n          <input id=\"username\" name=\"username\" type=\"text\" [(ngModel)]=\"user.username\" placeholder=\"Username\" class=\"form-control\" required #username = \"ngModel\">\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <div class=\"col-sm-auto\">\n          <input id=\"password\" name=\"password\" type=\"password\" placeholder=\"Password\" [(ngModel)]=\"user.password\" class=\"form-control\" #password = \"ngModel\" required>\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <div class=\"col-sm-auto\">\n          <button type=\"submit\" class=\"signupbtn\" (click)=\"onSubmit()\">Submit</button>\n        </div>\n      </div>\n      </div>\n    </fieldset>\n  </form>\n</div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -172,7 +172,7 @@ AddblogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkZHVzZXIvYWRkdXNlci5jb21wb25lbnQuY3NzIn0= */"
+module.exports = ".form-horizontal {\n  align-content: center;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkdXNlci9hZGR1c2VyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQkFBcUI7QUFDdkIiLCJmaWxlIjoic3JjL2FwcC9hZGR1c2VyL2FkZHVzZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb3JtLWhvcml6b250YWwge1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -245,6 +245,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bloglist_bloglist_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bloglist/bloglist.component */ "./src/app/bloglist/bloglist.component.ts");
 /* harmony import */ var _addblog_addblog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addblog/addblog.component */ "./src/app/addblog/addblog.component.ts");
 /* harmony import */ var _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./adduser/adduser.component */ "./src/app/adduser/adduser.component.ts");
+/* harmony import */ var _user_user_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user/user.component */ "./src/app/user/user.component.ts");
+
 
 
 
@@ -263,6 +265,10 @@ const routes = [
     {
         path: 'adduser',
         component: _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_5__["AdduserComponent"]
+    },
+    {
+        path: 'user',
+        component: _user_user_component__WEBPACK_IMPORTED_MODULE_6__["UserComponent"]
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -367,7 +373,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _user_user_component__WEBPACK_IMPORTED_MODULE_7__["UserComponent"],
             _blog_blog_component__WEBPACK_IMPORTED_MODULE_8__["BlogComponent"],
             _comment_comment_component__WEBPACK_IMPORTED_MODULE_9__["CommentComponent"],
-            _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_10__["AdduserComponent"],
+            _adduser_adduser_component__WEBPACK_IMPORTED_MODULE_10__["AdduserComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -403,12 +409,8 @@ __webpack_require__.r(__webpack_exports__);
 let BlogService = class BlogService {
     constructor(http) {
         this.http = http;
-        this.blogposturl = "https://basablog.herokuapp.com/blogPost/add";
-        this.bloggeturl = "https://basablog.herokuapp.com/blogPost/all";
-        this.blogdeleteurl = "https://basablog.herokuapp.com/";
-        this.blogupdateurl = "https://basablog.herokuapp.com/";
-        this.commentgeturl = "https://basablog.herokuapp.com/";
-        this.commentposturl = "https://basablog.herokuapp.com/";
+        this.blogposturl = "http://localhost:8080/blogPost/add";
+        this.bloggeturl = "http://localhost:8080/blogPost/all";
     }
     findAllBlogPost() {
         return this.http.get(this.bloggeturl);
@@ -601,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
-        this.userUrl = "https://basablog.herokuapp.com/users/add";
+        this.userUrl = 'http://localhost:8080/users/add';
     }
     save(user) {
         return this.http.post(this.userUrl, user);

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BloglistComponent } from './bloglist/bloglist.component';
 import { AddblogComponent } from './addblog/addblog.component';
 import {AdduserComponent} from './adduser/adduser.component';
-
+import {UserComponent} from './user/user.component';
 
 const routes: Routes = [
 {
@@ -15,10 +15,15 @@ const routes: Routes = [
   path: 'addblog',
   component: AddblogComponent
 },
-{
-  path: 'adduser',
-  component: AdduserComponent
-}
+  {
+    path: 'adduser',
+    component: AdduserComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
+  }
+
 ];
 
 @NgModule({
