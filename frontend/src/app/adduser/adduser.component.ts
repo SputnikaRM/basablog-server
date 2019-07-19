@@ -10,21 +10,19 @@ import { UserService } from '../user.service';
 })
 export class AdduserComponent implements OnInit {
   user: User;
-  constructor(private route: ActivatedRoute, private userService: UserService, private router : Router) { 
+  constructor(private route: ActivatedRoute, private userService: UserService, private router : Router) {
     this.user = new User();
   }
 
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.userService.save(this.user).subscribe(result => this.gotoUserList());
   }
 
-  gotoUserList(){
-    this.router.navigate(['users/add'])
+  gotoUserList() {
+    this.router.navigate(['users/add']);
   }
-
-
 }
 
