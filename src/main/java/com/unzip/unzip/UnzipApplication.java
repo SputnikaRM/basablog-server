@@ -24,34 +24,25 @@ public class UnzipApplication {
 	}
 
 
-//	@Bean
-//	public CommandLineRunner demo(BlogPostRepository repository) {
-//		return (args) -> {
-//			//save a couple of customers
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//			repository.save(new BlogPost(7, "Jaws", "Jaws is a great movie", "google.com", 1, 1, 1));
-//
-//
+	@Bean
+	public CommandLineRunner demo(UserRepository repository) {
+		return (args) -> {
+			//save a couple of customers
+			repository.save(new User("poppy", "jawn", "this"));
+
+
 //			// fetch all customers
 //			log.info("Customers found with findAll():");
 //			log.info("-------------------------------");
-//			for (BlogPost blogPost : repository.findAll()) {
-//				log.info(blogPost.toString());
+//			for (User user : repository.findAll()) {
+//				log.info(user.toString());
 //			}
 //			log.info("");
-//
-//			// fetch an individual customer by ID
-//			repository.findById(10)
-//					.ifPresent(customer -> {
-//						log.info("Customer found with findById(1L):");
-//						log.info("--------------------------------");
-//						log.info(customer.toString());
-//						log.info("");
-//					});
-//		};
-	//}
+
+			// fetch an individual customer by ID
+
+			System.out.println(repository.findByUsernameAndPassword("afafaf", "this"));
+		};
+	}
 
 }

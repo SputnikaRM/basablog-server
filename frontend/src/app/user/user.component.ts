@@ -14,6 +14,7 @@ user: User;
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
     this.user = new User();
   }
+
   ngOnInit() {
   }
 
