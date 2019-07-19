@@ -12,16 +12,11 @@ export class BloglistComponent implements OnInit {
   posts: Post[];
 
   constructor(private blogService: BlogService) {
-    
-    
-   }
-   
-   
-
-  ngOnInit() {
-    this.blogService.findAllBlogPost().subscribe(data=> {this.posts = data;});
   }
-      
- 
-
+  ngOnInit() {
+    this.blogService.findAllBlogPost().subscribe(data => {
+      this.posts = data;
+    });
+  }
 }
+
