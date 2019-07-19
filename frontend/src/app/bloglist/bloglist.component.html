@@ -1,18 +1,18 @@
 
 
 
-<div class="card text-center"style="width: 18rem; margin:0 auto;">
-  <div class="card border-danger mb-3" style="max-width: 18rem;">
+<div class="card text-center"style="width: 40rem; margin:0 auto;">
+  <div class="card border-danger mb-3" style="max-width: 40rem;">
     <tr *ngFor="let post of posts">
     
-      <img class="card-img-top" src={{post.imageURL}} alt="Card image cap">
+      <img class="card-img-top" src="{{post.imageURL || 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg'}}"  alt="Card image cap">
     
     <div class="card-body">
     
       <h5 class="card-title">{{post.title}}</h5>
     
 
-      <h5 class="card-title">{{post.title}}</h5>
+      
       <p class="card-text">{{post.postText}}</p>
     
       <h3 class="card-title">{{post.userId}}</h3>
