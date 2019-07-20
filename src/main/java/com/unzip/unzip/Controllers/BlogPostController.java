@@ -22,8 +22,13 @@ public class BlogPostController {
         return "Saved";
     }
 
+    @GetMapping(path="/blogPost/{id}")
+    public BlogPost getBlogPost(@PathVariable Integer id) {
+        return blogPostRepository.findById(id).get();
+    }
+
     @GetMapping(path="/blogPost/all")
-    public @ResponseBody Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
+    public Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
 
     @GetMapping(path="/blogPost/all/{tag}")
     @Query ("SELECT s FROM blog_post  WHERE s.tag1 = tag")

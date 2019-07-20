@@ -6,22 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @CrossOrigin
 class UserController {
     @Autowired
     private UserRepository userRepository;
 
     @PostMapping(path="users/add")
-    public @ResponseBody String addNewUser(@RequestBody User user){
+    public String addNewUser(@RequestBody User user){
         System.out.println(user);
         userRepository.save(user);
         return "Saved";
     }
 
-    @CrossOrigin
     @PostMapping(path="/users/verify")
-    public @ResponseBody Boolean verifyUser(@RequestBody User user){
+    public Boolean verifyUser(@RequestBody User user){
         System.out.println(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
         try {
             userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
