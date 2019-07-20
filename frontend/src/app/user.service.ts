@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from './user';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {NgModel} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class UserService {
   }
 
   public verifyUser(user: User) {
-    return this.http.get<User>(this.verifyUrl, user);
+    return this.http.post<User>(this.verifyUrl, user);
   }
-
 }
+

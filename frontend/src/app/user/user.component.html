@@ -1,7 +1,7 @@
 <div class="popover-header clearfix">
 <div class="card-body" align="right">
 <div class="form-horizontal">
-  <form class="row" style="align-content: center">
+  <form>
     <fieldset>
       <div class="row">
       <div class="form-group">
@@ -9,17 +9,12 @@
           <input id="username" name="username" type="text" [(ngModel)]="user.username" placeholder="Username" class="form-control" #username = "ngModel" required>
         </div>
       </div>
-        <div class="form-group">
         <div class="col-sm-auto">
           <input id="password" name="password" type="password" placeholder="Password" [(ngModel)]="user.password" class="form-control" #password = "ngModel" required>
         </div>
-      </div>
-      <div class="form-group">
         <div class="col-sm-auto">
-          <button type="submit" class="signupbtn" (click)="onSubmit()">Submit</button>
-          <p *ngIf="user" class="card-text">{{user.username}}</p>
-          <p>test</p>
-        </div>
+          <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+          <p class="card-text">{{result}}</p>
       </div>
       </div>
     </fieldset>

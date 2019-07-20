@@ -23,7 +23,6 @@ public class UnzipApplication {
 
 	}
 
-
 	@Bean
 	public CommandLineRunner demo(UserRepository repository) {
 		return (args) -> {
@@ -40,8 +39,8 @@ public class UnzipApplication {
 //			log.info("");
 
 			// fetch an individual customer by ID
-
-			System.out.println(repository.findByUsernameAndPassword("afafaf", "this"));
+//			UserController us = new UserController();
+//			System.out.println(us.verifyUser(new User("poppy", "this")));
 		};
 	}
 
