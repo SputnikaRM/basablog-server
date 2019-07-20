@@ -11,5 +11,7 @@ import java.util.List;
 @Repository
 public interface BlogPostRepository extends CrudRepository<BlogPost, Integer> {
     List<BlogPost> findAllByTag1(String tag1);
+    List<BlogPost> findAllByTag2(String tag2);
+    List<BlogPost> findAllByTag3(String tag3);
 
 }
