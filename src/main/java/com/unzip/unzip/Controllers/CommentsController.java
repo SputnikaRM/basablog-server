@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.*;
     }
 
     @GetMapping(path="/{postid}/comments/all")
-    public @ResponseBody Iterable<Comments> getAllUsers(@PathVariable Integer postid){
-        return commentsRepo.findAll();
+    public @ResponseBody Iterable<Comments> getAllBlogPostComments(@PathVariable Integer postid){
+        return commentsRepo.findAllByPostid(postid);
     }
 }
 

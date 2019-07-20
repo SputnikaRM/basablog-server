@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface BlogPostRepository extends CrudRepository<BlogPost, Integer> {
-    List<BlogPost> findByTag1(String tag1);
+    List<BlogPost> findAllByTag1(String tag1);
 
 }

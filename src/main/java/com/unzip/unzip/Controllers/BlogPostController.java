@@ -31,9 +31,8 @@ public class BlogPostController {
     public Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
 
     @GetMapping(path="/blogPost/all/{tag}")
-    @Query ("SELECT s FROM blog_post  WHERE s.tag1 = tag")
-    public List<BlogPost> findAllBlogPostByTag(@PathVariable String tag){
-        return blogPostRepository.findByTag1(tag);
+    public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
+        return blogPostRepository.findAllByTag1(tag);
     }
 
 
