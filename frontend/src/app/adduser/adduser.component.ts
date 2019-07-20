@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css']
 })
+
 export class AdduserComponent implements OnInit {
   user: User;
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
@@ -18,11 +19,11 @@ export class AdduserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    return this.userService.save(this.user).subscribe(result => this.gotoUserList());
   }
 
   gotoUserList() {
-    this.router.navigate(['users/add']);
+    return this.router.navigate(['users/add']);
   }
 }
 
