@@ -23,7 +23,7 @@
           <a class="nav-link" routerLink= 'adduser'>Register</a>
         </li>
         </div>
-        <div>
+        <div *ngIf="!loginstatus">
          <li class="nav-item">
            <a class="nav-link" routerLink= 'user'>Login</a>
         </li>

@@ -4,17 +4,18 @@ import { BloglistComponent } from './bloglist/bloglist.component';
 import { AddblogComponent } from './addblog/addblog.component';
 import {AdduserComponent} from './adduser/adduser.component';
 import {UserComponent} from './user/user.component';
+import { BlogComponent } from './blog/blog.component';
 
 const routes: Routes = [
-{
-  path: '',
-  component: BloglistComponent
-},
+  {
+    path: '',
+    component: BloglistComponent
+  },
 
-{
-  path: 'addblog',
-  component: AddblogComponent
-},
+  {
+    path: 'addblog',
+    component: AddblogComponent
+  },
   {
     path: 'adduser',
     component: AdduserComponent
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserComponent
+  },
+  {
+    path: 'post/:id',
+    component: BlogComponent
   }
 
 ];

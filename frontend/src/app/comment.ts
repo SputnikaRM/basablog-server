@@ -3,6 +3,7 @@ export class Comment {
     body: string;
     postid: number;
     userId : number;
-    constructor(){};
+
+    constructor() {}
 
 }
