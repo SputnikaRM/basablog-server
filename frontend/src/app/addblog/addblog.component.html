@@ -11,9 +11,9 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="Post">Post</label>
+                  <label for="postText">Post</label>
                   <input type="text" [(ngModel)]="post.postText" 
-                    class="form-control" id="name" name="name" placeholder="PostText"
+                    class="form-control" id="postText" name="name" placeholder="PostText"
                     required #postText="ngModel">
                 </div>
                 
@@ -23,9 +23,14 @@
                     class="form-control" id="UserID" name="UserId" placeholder="UserId"
                     required #userId="ngModel">
                  </div>
-                
+                <div class="form-group">
+                  <label for="imageURL">Image URL</label>
+                  <input type="text" [(ngModel)]="post.imageURL"
+                         class="form-control" id="imageURL" name="imageURL" placeholder="imageURL"
+                         required #imageURL="ngModel">
+                </div>
                  <div class="form-group">
-                  <label for="tag1">Select a tag</label> 
+                  <label for="tag1">Select a tag</label>
                   <select class="form-control"   id="exampleFormControlSelect1">
                       <input [(ngModel)]="post.tag1" [ngModelOptions]="{standalone: true}">
                     <option>Tag</option>
@@ -39,4 +44,4 @@
               </form>
             </div>
           </div>
-        
+</div>
