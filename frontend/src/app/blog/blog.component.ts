@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../post';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../blog.service';
+import { CommentService } from '../comment.service';
+import { Comment } from '../comment';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-blog',
@@ -11,14 +14,21 @@ import { BlogService } from '../blog.service';
 
 export class BlogComponent implements OnInit {
   @Input() post : Post;
+  @Input() comments : Comment[];
+  
+  loginStatus : boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private blogService: BlogService
+    private blogService: BlogService,
+    private commentService: CommentService,
+    private appComponent : AppComponent
   ) {}
-
+  
   ngOnInit() {
     this.getPost();
+    this.getComments();
+    // this.loginStatus = this.appComponent.getLoggedInStatus();
   }
 
   getPost(): void {
@@ -26,33 +36,13 @@ export class BlogComponent implements OnInit {
     this.blogService.getBlogPost(id).subscribe(post => this.post = post);
   }
 
+  getComments(): void {
+    const postid = +this.route.snapshot.paramMap.get('id');
+    this.commentService.findAll(postid).subscribe(comments => this.comments = comments);
+  }
+
+  onSubmit(): void {
+    
+  }
 }
 
-// import { Component, OnInit, Input } from '@angular/core';
-// import { Post } from '../post';
-// import { ActivatedRoute } from '@angular/router';
-// import { BlogService } from '../blog.service';
-
-// @Component({
-//   selector: 'app-blog-detail',
-//   templateUrl: './blog-detail.component.html',
-//   styleUrls: ['./blog-detail.component.css']
-// })
-// export class BlogDetailComponent implements OnInit {
-//   @Input() post : Post;
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private blogService: BlogService,
-//   ) { }
-
-//   ngOnInit(): void {
-//     this.getPost();
-//   }
-
-//   getPost(): void {
-//     const id = +this.route.snapshot.paramMap.get('id'); 
-//     this.blogService.getBlogPost(id).subscribe(post => this.post = post);
-//   }
-
-// }

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
     @Autowired
     private CommentsRepository commentsRepo;
 
-    @PostMapping(path="/{postid}/comments/add")
-    public String addNewComment(@PathVariable Integer postid, @RequestBody Comments comments){
+    @PostMapping(path="/comments/add")
+    public String addNewComment(@RequestBody Comments comments){
         commentsRepo.save(comments);
         return "Saved";
     }
