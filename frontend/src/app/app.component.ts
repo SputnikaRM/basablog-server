@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   loginstatus = true;
   title = 'unZip';
+
+  userstatuschange(value: boolean) {
+    this.loginstatus = value;
+  }
 }
-
-

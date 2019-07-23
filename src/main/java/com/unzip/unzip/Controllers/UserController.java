@@ -20,7 +20,7 @@ class UserController {
     }
 
     @PostMapping(path="/users/verify")
-    public Boolean verifyUser(@RequestBody User user){
+    public @ResponseBody Boolean verifyUser(@RequestBody User user){
         System.out.println(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
         try {
             userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
