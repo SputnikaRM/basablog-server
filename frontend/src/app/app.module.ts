@@ -11,6 +11,8 @@ import { CommentComponent } from './comment/comment.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { AddcommentComponent } from './addcomment/addcomment.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {FormsModule} from '@angular/forms';
     UserComponent,
     BlogComponent,
     CommentComponent,
-    AdduserComponent
+    AdduserComponent,
+    AddcommentComponent
   ],
   imports: [
     BrowserModule,

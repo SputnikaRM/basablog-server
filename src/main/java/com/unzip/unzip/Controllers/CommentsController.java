@@ -4,30 +4,25 @@ import com.unzip.unzip.Models.Comments;
 import com.unzip.unzip.Repositories.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @CrossOrigin
     public class CommentsController {
-        @Autowired
-        private CommentsRepository commentsRepo;
 
-        @GetMapping(path="/comments/add")
-        public @ResponseBody
-        String addNewComment(@RequestParam String body, @RequestParam Integer userid, @RequestParam Integer postid){
-            Comments n = new Comments(body,userid,postid);
+    @Autowired
+    private CommentsRepository commentsRepo;
 
-            commentsRepo.save(n);
-            return "Saved";
-        }
-
-        @GetMapping(path="/comments/all")
-        public @ResponseBody Iterable<Comments> getAllUsers(){
-            return commentsRepo.findAll();
-        }
+    @PostMapping(path="/comments/add")
+    public String addNewComment(@RequestBody Comments comments){
+        commentsRepo.save(comments);
+        return "Saved";
     }
+
+    @GetMapping(path="/{postid}/comments/all")
+    public @ResponseBody Iterable<Comments> getAllBlogPostComments(@PathVariable Integer postid){
+        return commentsRepo.findAllByPostid(postid);
+    }
+}
 
 

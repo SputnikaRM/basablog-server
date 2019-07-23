@@ -1,0 +1,25 @@
+<div class = 'container'>
+        <h1>Add Comment</h1>
+        <div class="card my-5">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                   
+                <div class="form-group">
+                    <label for="userid">UserId</label>
+                    <input type="number" [(ngModel)]="comment.userid" 
+                        class="form-control" id="postText" name="name" placeholder="PostText"
+                        required #postText="ngModel">
+                    </div>
+                    <div class="form-group">
+                      <label for="Comment">Comment</label>
+                      <input type="text" [(ngModel)]="comment.title" 
+                        class="form-control" id="name" name="name" placeholder="text goes here"
+                        required #title="ngModel">
+                    </div>
+                    
+                </form>
+                </div>
+                    </div>
+                
+    </div>
+    

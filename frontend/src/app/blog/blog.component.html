@@ -1,1 +1,41 @@
-<p>blog works!</p>
+<div class="card text-center"style="width: 40rem; margin:0 auto;">
+<div class="card border-danger " style="max-width: 40rem;">
+<div *ngIf="post">
+    <h5 class="card-title">{{post.title}}</h5>
+            <img class="card-img-top" src="{{post.imageURL || 'https://www.tigers-world.com/wp-content/uploads/Siberian_tiger-1.jpg' }}"  alt="post image">
+        <div class="card-body">
+            <p class="card-text">{{post.postText}}</p>
+            <h3 class="card-title">{{post.userId}}</h3>
+        </div>
+</div>
+</div>
+</div>
+
+    <h5>Comments</h5>
+      <div class="card text-center"style="width: 40rem; margin:0 auto;">
+        <div class="card border-danger " style="max-width: 40rem;">
+          <a *ngFor="let comment of comments">
+            <div class="module comment">
+              <div class="card-body">
+                <h5 class="card-title">User: {{comment.userid}}</h5>
+                <p class="card-text">{{comment.body}}</p>
+              </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- <div *ngIf=loginStatus> -->
+        <form>
+            <div class="form-group">
+              <label for="username"></label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label for="comment"> </label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Comment">
+            </div>
+          </form>
+        
+    <!-- </div> -->
+     

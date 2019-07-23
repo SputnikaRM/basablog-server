@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 @RestController
@@ -21,13 +22,17 @@ public class BlogPostController {
         return "Saved";
     }
 
-    @GetMapping(path="/blogPost/all")
-    public @ResponseBody Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
+    @GetMapping(path="/blogPost/{id}")
+    public BlogPost getBlogPost(@PathVariable Integer id) {
+        return blogPostRepository.findById(id).get();
+    }
 
-    @GetMapping(path="/blogPost/all/tags")
-    @Query ("SELECT s FROM blog_post  WHERE s.tag1 = tag")
-    public Iterable<BlogPost> getAllBlogPostByTag(@PathVariable String tag){
-        return blogPostRepository.findAll();
+    @GetMapping(path="/blogPost/all")
+    public Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
+
+    @GetMapping(path="/blogPost/all/{tag}")
+    public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
+        return blogPostRepository.findAllByTag1(tag);
     }
 
 
