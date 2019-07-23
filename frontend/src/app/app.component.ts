@@ -13,4 +13,8 @@ export class AppComponent {
   userstatuschange(value: boolean) {
     this.loginstatus = value;
   }
+
+  getLoggedInStatus(): boolean {
+    return this.loginstatus;
+  }
 }
