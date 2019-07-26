@@ -21,7 +21,6 @@ public class BlogPostController {
         blogPostRepository.save(post);
         return "Saved";
     }
-
     @GetMapping(path="/blogPost/{id}")
     public BlogPost getBlogPost(@PathVariable Integer id) {
         return blogPostRepository.findById(id).get();
@@ -34,6 +33,24 @@ public class BlogPostController {
     public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
         return blogPostRepository.findAllByTag1(tag);
     }
+    @GetMapping(path="/user/{id}/blogPost/all")
+    public List<BlogPost> getAllBlogPostsByUser(@PathVariable Integer id){
+        return blogPostRepository.findAllByUserId(id);
+    }
+    @GetMapping(path="/user/{userId}/blogPost/{postId}")
+    public BlogPost getPostByUser(@PathVariable Integer userId, @PathVariable Integer postId) {
+        return blogPostRepository.findBlogPostByUserIdAndAndId(userId, postId);
+    }
+    @PutMapping(path="/blogPost/edit/{id}")
+    public String updateBlogPost(@RequestBody BlogPost post, @PathVariable Integer id) {
+        BlogPost oldPost = blogPostRepository.findById(id).get();
+        oldPost.setTitle(post.getTitle());
+        oldPost.setPostText(post.getPostText());
+        oldPost.setImageURL(post.getImageURL());
+        blogPostRepository.save(oldPost);
+        return "Updated";
+    }
+
 
 
 }
