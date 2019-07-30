@@ -20,8 +20,16 @@ import org.springframework.web.bind.annotation.*;
     }
 
     @GetMapping(path="/{postid}/comments/all")
-    public @ResponseBody Iterable<Comments> getAllBlogPostComments(@PathVariable Integer postid){
+    public Iterable<Comments> getAllBlogPostComments(@PathVariable Integer postid){
         return commentsRepo.findAllByPostid(postid);
+    }
+
+    @PutMapping(path="{postid}/comments/{id}")
+    public String editComment(@PathVariable Integer postid, @PathVariable Long id, @RequestBody Comments comment){
+        Comments oldComment = commentsRepo.findById(id).get();
+        oldComment.setBody(comment.getBody());
+        commentsRepo.save(comment);
+        return "updated";
     }
 }
 
