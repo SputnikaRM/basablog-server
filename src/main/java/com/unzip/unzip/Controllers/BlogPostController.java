@@ -3,6 +3,7 @@ package com.unzip.unzip.Controllers;
 import com.unzip.unzip.Models.BlogPost;
 import com.unzip.unzip.Repositories.BlogPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +51,9 @@ public class BlogPostController {
         blogPostRepository.save(oldPost);
         return "Updated";
     }
-
-
+    @GetMapping(path="/blogPost/all/reverse")
+    public List<BlogPost> getAllBlogPostDesc() {
+        return blogPostRepository.findByOrderByIdDesc();
+    }
 
 }
