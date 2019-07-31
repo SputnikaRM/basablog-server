@@ -28,5 +28,6 @@ class UserController {
             return false; //"Invalid username or password";
         } return true; //"Successful Login! Welcome back " + user.getUsername();
     }
+
 }
 
