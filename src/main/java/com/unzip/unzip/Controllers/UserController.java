@@ -20,13 +20,13 @@ class UserController {
     }
 
     @PostMapping(path="/users/verify")
-    public String verifyUser(@RequestBody User user){
+    public Boolean verifyUser(@RequestBody User user){
         System.out.println(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
         try {
             userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         }catch (NullPointerException e){
-            return "Invalid username or password";
-        } return "Successful Login! Welcome back " + user.getUsername();
+            return false;//"Invalid username or password";
+        } return true;//"Successful Login! Welcome back " + user.getUsername();
     }
 
 }

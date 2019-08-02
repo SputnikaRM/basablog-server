@@ -1,6 +1,7 @@
 package com.unzip.unzip.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -15,15 +16,16 @@ public class Comments {
     private Integer postid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "postid", nullable = false, insertable = false, updatable = false)
+    //@JoinColumn( insertable = false, updatable = false)
     @JsonBackReference
     private BlogPost blogpost;
 
-    public Comments(String body,Integer userid,Integer postid) {
+    public Comments(String body,Integer userid,Integer postid, BlogPost post) {
 
         this.body = body;
         this.userid = userid;
         this.postid = postid;
+        this.blogpost = post;
     }
 
     public Comments() {
