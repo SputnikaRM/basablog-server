@@ -17,6 +17,8 @@ public class BlogPost {
     private String tag3;
 
 
+
+
     public BlogPost() {
     }
 
