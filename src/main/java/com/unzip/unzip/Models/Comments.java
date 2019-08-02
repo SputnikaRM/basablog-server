@@ -16,7 +16,6 @@ public class Comments {
     private Integer postid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn( insertable = false, updatable = false)
     @JsonBackReference
     private BlogPost blogpost;
 
@@ -63,7 +62,7 @@ public class Comments {
     public void setPostid(Integer postid) {
         this.postid = postid;
     }
-
+    @JsonIgnore
     public BlogPost getPosts() {
         return blogpost;
     }
