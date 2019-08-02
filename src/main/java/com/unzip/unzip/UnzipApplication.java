@@ -20,8 +20,5 @@ public class UnzipApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UnzipApplication.class, args);
-
 	}
-
-
 }

@@ -22,6 +22,7 @@ public class BlogPostController {
         blogPostRepository.save(post);
         return "Saved";
     }
+
     @GetMapping(path="/blogPost/{id}")
     public BlogPost getBlogPost(@PathVariable Integer id) {
         return blogPostRepository.findById(id).get();
