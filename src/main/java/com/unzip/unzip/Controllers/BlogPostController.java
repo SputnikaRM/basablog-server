@@ -34,6 +34,7 @@ public class BlogPostController {
     public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
         return blogPostRepository.findAllByTag1(tag);
     }
+
     @GetMapping(path="/user/{id}/blogPost/all")
     public List<BlogPost> getAllBlogPostsByUser(@PathVariable Integer id){
         return blogPostRepository.findAllByUserId(id);
