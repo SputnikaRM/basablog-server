@@ -17,6 +17,4 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
     List<BlogPost> findAllByUserId(Integer id);
     BlogPost findBlogPostByUserIdAndAndId(Integer userId, Integer postId);
     List<BlogPost> findByOrderByIdDesc();
-
-
 }
