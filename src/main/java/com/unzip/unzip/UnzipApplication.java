@@ -1,9 +1,11 @@
 package com.unzip.unzip;
 import com.unzip.unzip.Models.BlogPost;
 import com.unzip.unzip.Models.Comments;
+import com.unzip.unzip.Models.Tags;
 import com.unzip.unzip.Models.User;
 import com.unzip.unzip.Repositories.BlogPostRepository;
 import com.unzip.unzip.Repositories.CommentsRepository;
+import com.unzip.unzip.Repositories.TagsRepository;
 import com.unzip.unzip.Repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
