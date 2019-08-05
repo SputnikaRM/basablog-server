@@ -1,8 +1,15 @@
 package com.unzip.unzip.Models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "blog_post")
 public class BlogPost {
 
     @Id
@@ -16,8 +23,10 @@ public class BlogPost {
     private String tag2;
     private String tag3;
 
-
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "blogpost")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @JsonManagedReference
+    private List<Comments> comments = new ArrayList<>();
 
     public BlogPost() {
     }
@@ -99,6 +108,14 @@ public class BlogPost {
 
     public void setTag3(String tag3) {
         this.tag3 = tag3;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments){
+        this.comments = comments;
     }
 }
 
