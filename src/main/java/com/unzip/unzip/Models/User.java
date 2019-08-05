@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = String.valueOf(String.valueOf(username.hashCode() + password.hashCode()).hashCode());
     }
 
     public User(){}
@@ -48,7 +48,7 @@ public class User {
     public User(String username, String emailAddress, String password){
         this.username = username;
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.password = String.valueOf(String.valueOf(username.hashCode() + password.hashCode()).hashCode());
     }
 
     @Override

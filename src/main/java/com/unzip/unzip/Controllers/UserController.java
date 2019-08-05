@@ -25,8 +25,8 @@ class UserController {
         try {
             userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         }catch (NullPointerException e){
-            return false; //"Invalid username or password";
-        } return true; //"Successful Login! Welcome back " + user.getUsername();
+            return false;//"Invalid username or password";
+        } return true;//"Successful Login! Welcome back " + user.getUsername();
     }
 
 }

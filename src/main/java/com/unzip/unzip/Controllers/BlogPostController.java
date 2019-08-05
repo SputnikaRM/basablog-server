@@ -22,9 +22,16 @@ public class BlogPostController {
         blogPostRepository.save(post);
         return "Saved";
     }
+
     @GetMapping(path="/blogPost/{id}")
     public BlogPost getBlogPost(@PathVariable Integer id) {
         return blogPostRepository.findById(id).get();
+    }
+
+    @DeleteMapping(path="/blogPost/{id}")
+    public String deleteBlogPost(@PathVariable Integer id) {
+        blogPostRepository.deleteById(id);
+        return "Deleted";
     }
 
     @GetMapping(path="/blogPost/all")
@@ -34,6 +41,7 @@ public class BlogPostController {
     public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
         return blogPostRepository.findAllByTag1(tag);
     }
+
     @GetMapping(path="/user/{id}/blogPost/all")
     public List<BlogPost> getAllBlogPostsByUser(@PathVariable Integer id){
         return blogPostRepository.findAllByUserId(id);
