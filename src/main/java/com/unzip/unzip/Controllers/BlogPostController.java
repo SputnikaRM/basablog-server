@@ -23,11 +23,6 @@ public class BlogPostController {
         return "Saved";
     }
 
-    @DeleteMapping(path="/blogPost/delete/{id}")
-    public void deleteBlogPost(@PathVariable Integer id){
-        blogPostRepository.deleteById(id);
-    }
-
     @GetMapping(path="/blogPost/{id}")
     public BlogPost getBlogPost(@PathVariable Integer id) {
         return blogPostRepository.findById(id).get();
