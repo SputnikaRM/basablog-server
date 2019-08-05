@@ -27,6 +27,12 @@ public class BlogPostController {
         return blogPostRepository.findById(id).get();
     }
 
+    @DeleteMapping(path="/blogPost/{id}")
+    public String deleteBlogPost(@PathVariable Integer id) {
+        blogPostRepository.deleteById(id);
+        return "Deleted";
+    }
+
     @GetMapping(path="/blogPost/all")
     public Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
 
