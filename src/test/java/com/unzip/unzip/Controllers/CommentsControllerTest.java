@@ -51,14 +51,5 @@ public class CommentsControllerTest {
 //        Assert.assertEquals(expected,actual);
 
 
-    @Test
-    public void getAllBlogPostComments() {
-        when(comments.findById(1L).get()).thenReturn();
-        controller.getAllBlogPostComments(1);
-        verify(comments, times(1)).findById(1L);
-    }
 
-    @Test
-    public void editComment() {
-    }
 }
