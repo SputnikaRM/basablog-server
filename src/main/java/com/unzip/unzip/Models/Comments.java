@@ -1,8 +1,12 @@
 package com.unzip.unzip.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "comments")
 public class Comments {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -11,11 +15,16 @@ public class Comments {
     private Integer userid;
     private Integer postid;
 
-    public Comments(String body,Integer userid,Integer postid) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private BlogPost blogpost;
+
+    public Comments(String body,Integer userid,Integer postid, BlogPost post) {
 
         this.body = body;
         this.userid = userid;
         this.postid = postid;
+        this.blogpost = post;
     }
 
     public Comments() {
@@ -52,6 +61,14 @@ public class Comments {
 
     public void setPostid(Integer postid) {
         this.postid = postid;
+    }
+    @JsonIgnore
+    public BlogPost getPosts() {
+        return blogpost;
+    }
+
+    public void setPosts(BlogPost posts) {
+        this.blogpost = posts;
     }
 }
 

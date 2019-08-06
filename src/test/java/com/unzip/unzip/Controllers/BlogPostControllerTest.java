@@ -25,12 +25,15 @@ public class BlogPostControllerTest {
     @Mock
     private BlogPostRepository repository;
 
+
     @InjectMocks
     private BlogPostController controller;
 
     private List<BlogPost> stubData() {
         BlogPost post1 = new BlogPost();
+        post1.setId(1);
         BlogPost post2 = new BlogPost();
+        post2.setId(2);
         return Arrays.asList(post1, post2);
     }
 
@@ -41,6 +44,8 @@ public class BlogPostControllerTest {
 
     @Test
     public void getAllBlogPost() {
+
+
     }
 
     @Test
@@ -49,9 +54,7 @@ public class BlogPostControllerTest {
 
     @Test
     public void getBlogPost() {
-        when(repository.findById(1).get()).thenReturn(stubData().get(1));
-        controller.getBlogPost(1);
-        verify(repository, times(1)).findById(1);
+        when(repository.findById(1).get()).thenReturn(stubData().get(0));
     }
 
     @Test
@@ -77,4 +80,5 @@ public class BlogPostControllerTest {
     @Test
     public void getAllBlogPostDesc() {
     }
+
 }

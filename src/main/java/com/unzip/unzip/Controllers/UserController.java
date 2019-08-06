@@ -19,14 +19,16 @@ class UserController {
         return "Saved";
     }
 
-    @PostMapping(path="/users/verify")
-    public Boolean verifyUser(@RequestBody User user){
+    @RequestMapping (path="/users/verify")
+
+    public User verifyUser(@RequestBody User user){
         System.out.println(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
         try {
-            userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+           User user2 = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+            return user2;
         }catch (NullPointerException e){
-            return false; //"Invalid username or password";
-        } return true; //"Successful Login! Welcome back " + user.getUsername();
+            return null;//"Invalid username or password";
+        }//"Successful Login! Welcome back " + user.getUsername();
     }
 
 }
