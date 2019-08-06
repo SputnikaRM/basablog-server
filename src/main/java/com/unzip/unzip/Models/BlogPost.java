@@ -1,6 +1,11 @@
 package com.unzip.unzip.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class BlogPost {
@@ -16,7 +21,10 @@ public class BlogPost {
     private String tag2;
     private String tag3;
 
-
+    @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "post")
+//    @JoinColumn(name="post_id", nullable=false)
+    @JsonManagedReference
+    private List<Tags> tags = new ArrayList<>();
 
 
     public BlogPost() {
