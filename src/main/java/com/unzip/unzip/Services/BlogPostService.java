@@ -16,7 +16,8 @@ public class BlogPostService {
     TagsRepository tagsRepository;
 
     public void save(BlogPost post){
-        post.setHashpostId(post.getTitle() , post.getUserId());
+        post.setTimeStamp();
+        post.setHashpostId(post.getTitle() , post.getUserId(),post.getTimeStamp());
         blogPostRepository.save(post);
         tagsRepository.save(new Tags(post.getTag(),post.getHashpostId()));
     }

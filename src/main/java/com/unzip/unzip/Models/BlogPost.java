@@ -9,6 +9,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,7 @@ public class BlogPost {
     private String imageURL;
     private String tag;
     private Integer posthashId;
+    private Long timeStamp;
 
 
     @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "post")
@@ -45,12 +47,13 @@ public class BlogPost {
     public BlogPost() {
     }
 
-    public BlogPost(Integer userId, String title, String postText, String imageURL, String tag1) {
+    public BlogPost(Integer userId, String title, String postText, String imageURL, String tag, Long timeStamp) {
         this.userId = userId;
         this.title = title;
         this.postText = postText;
         this.imageURL = imageURL;
         this.tag = tag;
+        this.timeStamp= (long) ((title + userId + timeStamp).hashCode());
 
 
     }
@@ -122,8 +125,16 @@ public class BlogPost {
         return posthashId;
     }
 
-    public void setHashpostId(String title, Integer userId) {
-        this.posthashId = ("alsdkjf".hashCode() + "a;lkdsjfa;sdfjk".hashCode());
+    public void setHashpostId(String title, Integer userId, Long timeStamp) {
+        this.posthashId = ((title + userId+timeStamp).hashCode());
+    }
+
+    public Long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp() {
+        this.timeStamp = new Date().getTime() ;
     }
 
 }
