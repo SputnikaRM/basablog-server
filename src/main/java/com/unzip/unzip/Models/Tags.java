@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,10 @@ public class Tags {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer tagsId;
     private String tag;
-//    private Integer postId;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name="postid",nullable = false)
+      @JoinColumn(name="posthashId",nullable = true)
     @JsonBackReference
     private BlogPost post;
 
@@ -25,8 +26,9 @@ public class Tags {
     public Tags() {
     }
 
-    public Tags(String tag, Integer postId) {
+    public Tags(String tag,Integer posthashId) {
         this.tag = tag;
+
        // this.postId = postId;
     }
 
@@ -46,6 +48,9 @@ public class Tags {
         this.tag = tag;
     }
 
+
+    }
+
 //    public Integer getPostId() {
 //        return postId;
 //    }
@@ -54,4 +59,4 @@ public class Tags {
 //        this.postId = postId;
 //    }
 
-}
+
