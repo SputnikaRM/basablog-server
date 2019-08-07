@@ -15,9 +15,13 @@ public class BlogPost {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    @Column(nullable=false)
     private Integer userId;
+    @Column(nullable=false)
     private String title;
+    @Column(nullable=false, columnDefinition = "TEXT")
     private String postText;
+    @Column(columnDefinition = "TEXT")
     private String imageURL;
     private String tag1;
     private String tag2;

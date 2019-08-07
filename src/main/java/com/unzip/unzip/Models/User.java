@@ -7,8 +7,11 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    @Column(nullable=false)
     private String username;
+    @Column(nullable=false)
     private String emailAddress;
+    @Column(nullable=false)
     private String password;
 
     public Integer getId() {

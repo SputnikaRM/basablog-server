@@ -11,8 +11,11 @@ public class Comments {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String body;
+    @Column(nullable=false)
     private Integer userid;
+    @Column(nullable=false)
     private Integer postid;
 
     @ManyToOne(fetch = FetchType.LAZY)
