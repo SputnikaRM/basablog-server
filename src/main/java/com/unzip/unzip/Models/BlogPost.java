@@ -21,7 +21,7 @@ public class BlogPost {
     private String title;
     @Column(nullable=false, columnDefinition = "TEXT")
     private String postText;
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 500)
     private String imageURL;
     private String tag1;
     private String tag2;
