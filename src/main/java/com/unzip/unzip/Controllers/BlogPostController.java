@@ -40,10 +40,10 @@ public class BlogPostController {
     @GetMapping(path="/blogPost/all")
     public Iterable<BlogPost> getAllBlogPost() {return blogPostRepository.findAll();}
 
-    @GetMapping(path="/blogPost/all/{tag}")
-    public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
-        return blogPostRepository.findAllByTag(tag);
-    }
+//    @GetMapping(path="/blogPost/all/{tag}")
+//    public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
+//        return blogPostRepository.findAllByTag(tag);
+//    }
 
     @GetMapping(path="/user/{id}/blogPost/all")
     public List<BlogPost> getAllBlogPostsByUser(@PathVariable Integer id){

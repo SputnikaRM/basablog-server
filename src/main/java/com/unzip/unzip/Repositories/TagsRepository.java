@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TagsRepository extends JpaRepository<Tags,Integer> {
 
-    List<Tags> findAllByTagsId(Integer tagsId);
-
+    List<Tags> findAllTagsByTag(String tag);
+    Tags getOneByTag(String tag);
 
 }

@@ -1,6 +1,7 @@
 package com.unzip.unzip.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.hibernate.annotations.LazyCollection;
@@ -32,10 +33,17 @@ public class BlogPost {
     private Long timeStamp;
 
 
-    @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "post")
-//    @JoinColumn(name="post_id", nullable=false)
-    @JsonManagedReference
-    private List<Tags> tags = new ArrayList<>();
+    public Tags getTags() {
+        return tags;
+    }
+
+    public void setTags(Tags tags) {
+        this.tags = tags;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Tags tags;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "blogpost")
