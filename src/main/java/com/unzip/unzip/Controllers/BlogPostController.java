@@ -2,6 +2,7 @@ package com.unzip.unzip.Controllers;
 
 import com.unzip.unzip.Models.BlogPost;
 import com.unzip.unzip.Repositories.BlogPostRepository;
+import com.unzip.unzip.Services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
@@ -16,10 +17,12 @@ import java.util.function.Predicate;
 public class BlogPostController {
     @Autowired
     private BlogPostRepository blogPostRepository;
+    @Autowired
+    private BlogPostService blogPostService;
 
     @PostMapping(path="/blogPost/add")
     public String addBlogPost(@RequestBody BlogPost post){
-        blogPostRepository.save(post);
+        blogPostService.save(post);
         return "Saved";
     }
 
@@ -39,7 +42,7 @@ public class BlogPostController {
 
     @GetMapping(path="/blogPost/all/{tag}")
     public List<BlogPost> findAllBlogPostByTag1(@PathVariable String tag){
-        return blogPostRepository.findAllByTag1(tag);
+        return blogPostRepository.findAllByTag(tag);
     }
 
     @GetMapping(path="/user/{id}/blogPost/all")

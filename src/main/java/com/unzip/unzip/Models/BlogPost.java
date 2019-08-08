@@ -1,11 +1,15 @@
 package com.unzip.unzip.Models;
 
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,24 +27,34 @@ public class BlogPost {
     private String postText;
     @Column(length = 500)
     private String imageURL;
-    private String tag1;
-    private String tag2;
-    private String tag3;
+    private String tag;
+    private Integer posthashId;
+    private Long timeStamp;
+
+
+    @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "post")
+//    @JoinColumn(name="post_id", nullable=false)
+    @JsonManagedReference
+    private List<Tags> tags = new ArrayList<>();
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "blogpost")
     @LazyCollection(LazyCollectionOption.TRUE)
     @JsonManagedReference
     private List<Comments> comments = new ArrayList<>();
 
+
     public BlogPost() {
     }
 
-    public BlogPost(Integer userId, String title, String postText, String imageURL, String tag1) {
+    public BlogPost(Integer userId, String title, String postText, String imageURL, String tag, Long timeStamp) {
         this.userId = userId;
         this.title = title;
         this.postText = postText;
         this.imageURL = imageURL;
-        this.tag1 = tag1;
+        this.tag = tag;
+        this.timeStamp= (long) ((title + userId + timeStamp).hashCode());
+
 
     }
 
@@ -90,28 +104,12 @@ public class BlogPost {
         this.imageURL = imageURL;
     }
 
-    public String getTag1() {
-        return tag1;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTag1(String tag1) {
-        this.tag1 = tag1;
-    }
-
-    public String getTag2() {
-        return tag2;
-    }
-
-    public void setTag2(String tag2) {
-        this.tag2 = tag2;
-    }
-
-    public String getTag3() {
-        return tag3;
-    }
-
-    public void setTag3(String tag3) {
-        this.tag3 = tag3;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public List<Comments> getComments() {
@@ -121,6 +119,24 @@ public class BlogPost {
     public void setComments(List<Comments> comments){
         this.comments = comments;
     }
+
+
+    public Integer getHashpostId() {
+        return posthashId;
+    }
+
+    public void setHashpostId(String title, Integer userId, Long timeStamp) {
+        this.posthashId = ((title + userId+timeStamp).hashCode());
+    }
+
+    public Long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp() {
+        this.timeStamp = new Date().getTime() ;
+    }
+
 }
 
 
