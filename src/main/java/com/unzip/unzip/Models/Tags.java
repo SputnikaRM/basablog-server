@@ -1,7 +1,10 @@
 package com.unzip.unzip.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,11 +19,14 @@ public class Tags {
     private Integer tagsId;
     private String tag;
 
+    public void setPosts(List<BlogPost> posts) {
+        this.posts = posts;
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name="posthashId",nullable = true)
-    @JsonBackReference
-    private BlogPost post;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tags")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @JsonManagedReference
+    private List<BlogPost> posts = new ArrayList<>();
 
 
     public Tags() {
@@ -48,8 +54,10 @@ public class Tags {
         this.tag = tag;
     }
 
-
+    public List<BlogPost> getPosts() {
+        return this.posts;
     }
+}
 
 //    public Integer getPostId() {
 //        return postId;
