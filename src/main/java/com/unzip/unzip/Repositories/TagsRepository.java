@@ -10,5 +10,6 @@ public interface TagsRepository extends JpaRepository<Tags,Integer> {
 
     List<Tags> findAllTagsByTag(String tag);
     Tags getOneByTag(String tag);
+    List<Tags> findAll();
 
 }
