@@ -19,9 +19,12 @@ public class BlogPostService {
     public void save(BlogPost post){
         post.setTimeStamp();
         post.setHashpostId(post.getTitle() , post.getUserId(),post.getTimeStamp());
-        Tags tags = new Tags(post.getTag(),post.getHashpostId());
-        tagsRepository.save(tags);
-        post.setTags(tagsRepository.getOneByTag(post.getTag()));
+        Tags tags = tagsRepository.getOneByTag(post.getTag());
+        if (tags == null) {
+            tags = new Tags(post.getTag(),post.getHashpostId());
+            tagsRepository.save(tags);
+        }
+        post.setTags(tags);
         blogPostRepository.save(post);
     }
 //            comment.setPosts(blogPostRepository.getOne(comment.getPostid()));
