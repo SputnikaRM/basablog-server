@@ -18,9 +18,7 @@ class UserController {
         userRepository.save(user);
         return "Saved";
     }
-
-    @RequestMapping (path="/users/verify")
-
+    @GetMapping (path="/users/verify")
     public User verifyUser(@RequestBody User user){
         System.out.println(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
         try {
