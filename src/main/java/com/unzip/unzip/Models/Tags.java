@@ -1,6 +1,15 @@
 package com.unzip.unzip.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Tags {
@@ -8,16 +17,25 @@ public class Tags {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer tagsId;
-    @Column
     private String tag;
-    private Integer postId;
+
+    public void setPosts(List<BlogPost> posts) {
+        this.posts = posts;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tags")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @JsonManagedReference
+    private List<BlogPost> posts = new ArrayList<>();
+
 
     public Tags() {
     }
 
-    public Tags(String tag, Integer postId) {
+    public Tags(String tag,Integer posthashId) {
         this.tag = tag;
-        this.postId = postId;
+
+       // this.postId = postId;
     }
 
     public Integer getTagsId() {
@@ -36,12 +54,17 @@ public class Tags {
         this.tag = tag;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public List<BlogPost> getPosts() {
+        return this.posts;
     }
-
-    public void setPostId(Integer postId) {
-        this.postId = postId;
-    }
-
 }
+
+//    public Integer getPostId() {
+//        return postId;
+//    }
+//
+//    public void setPostId(Integer postId) {
+//        this.postId = postId;
+//    }
+
+
