@@ -31,4 +31,8 @@ public class TagsService {
         Tags tag = tagsRepository.findById(id).get();
         return tag.getPosts();
     }
+
+    public List<Tags> findAllTags(){
+        return tagsRepository.findAll();
+    }
 }
